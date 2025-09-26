@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTimer } from '../hooks/useTimer';
+import { useAudio } from '../hooks/useAudio';
 
 interface TimerProps {
   onComplete: () => void;
@@ -9,12 +10,16 @@ interface TimerProps {
 
 export const Timer: React.FC<TimerProps> = ({ onComplete, duration = 25, autoStart = false }) => {
   const { status, start, pause, reset, formatTime, progress } = useTimer(duration);
+  const { playSound, settings } = useAudio();
 
   React.useEffect(() => {
     if (status === 'completed') {
+      if (settings.enabled) {
+        playSound('completion').catch(console.warn);
+      }
       onComplete();
     }
-  }, [status, onComplete]);
+  }, [status, onComplete, playSound, settings.enabled]);
 
   React.useEffect(() => {
     if (autoStart && status === 'idle') {

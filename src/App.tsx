@@ -3,6 +3,7 @@ import { Timer } from './components/Timer';
 import { SessionForm } from './components/SessionForm';
 import { Stats } from './components/Stats';
 import { SessionHistory } from './components/SessionHistory';
+import { AudioControls } from './components/AudioControls';
 import type { Session, SessionStats } from './types';
 import { addSession, getSessionStats, loadSessions } from './utils/storage';
 
@@ -78,6 +79,10 @@ function App() {
           <div className="grid md:grid-cols-2 gap-8">
             <Stats stats={stats} />
             <SessionHistory sessions={sessions} />
+          </div>
+
+          <div className="mt-8 max-w-md mx-auto">
+            <AudioControls />
           </div>
         </div>
       </div>
