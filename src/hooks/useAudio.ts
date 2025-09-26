@@ -73,7 +73,7 @@ export const useAudio = () => {
   }, []);
 
   const playSound = useCallback(async (
-    soundType: SoundType = 'completion',
+    soundType: SoundType = 'meditation-bell',
     customVolume?: number
   ) => {
     if (!settings.enabled || isPlaying) {

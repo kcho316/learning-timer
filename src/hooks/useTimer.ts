@@ -32,7 +32,7 @@ export const useTimer = (initialMinutes: number = 25) => {
     let interval: number | null = null;
 
     if (isActive && timeLeft > 0) {
-      interval = setInterval(() => {
+      interval = window.setInterval(() => {
         setTimeLeft((time) => {
           if (time <= 1) {
             setStatus('completed');

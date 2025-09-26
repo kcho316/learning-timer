@@ -15,7 +15,7 @@ export const Timer: React.FC<TimerProps> = ({ onComplete, duration = 25, autoSta
   React.useEffect(() => {
     if (status === 'completed') {
       if (settings.enabled) {
-        playSound('completion').catch(console.warn);
+        playSound('meditation-bell').catch(console.warn);
       }
       onComplete();
     }
